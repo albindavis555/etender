@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body{
+            display: grid;
+            place-items: center;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        thead{
+            background-color: rgb(0, 52, 44);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        thead>tr{
+            position: sticky;
+            top: 0;
+        }
+        tbody>tr>td{
+            color: #000034;
+            text-align: center;
+            font-size: 1.2rem;
+            height: 3.5rem;
+            border-right: 1px solid rgba(128, 128, 128, 0.405);
+        }
+        .add{
+            width: 10rem;
+            height: 4rem;
+            background-color: black;
+            color: white;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        tr:nth-child(even){
+            background-color: rgb(203, 201, 201);
+        }
+        .row:nth-last-child(1){
+            border-bottom: 3px solid rgb(0, 0, 0);
+        }
+        .button_top{
+            width: 100vw;
+            display: flex;
+            justify-content: space-around;
+        }
+        .search{
+            width: 8rem;
+            height: 2rem;
+            background-color: green;
+        }
+        form{
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            width: 100vw;
+        }
+        .search_b{
+            width: 6rem;
+            height: 2rem;
+        }
+        .search_{
+            width: 40%;
+            height: 2.5rem;
+            margin-bottom: 1rem;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .search_::placeholder{
+            text-align: center;
+        }
+        @media only screen and (max-width: 600px) {
+  body {
+   
+
+  }
+  thead>tr{
+            position: sticky;
+            top: 0;
+        }
+  
+}
+    </style>
+   
+</head>
+<body>
+    
+    <form action="/get" method="get" id="myInput" onkeyup="submitForm()">
+        <input class="search_" type="text" name="search" placeholder="SEARCH">
+        <input class="search_b" type="submit" value="SEARCH">
+    </form>
+
+    <table>
+        
+        <thead>
+            <tr>
+                <th>INDEX</th>
+                <th>ID</th>
+                <th>WARD</th>
+                <th>PROJECT</th>
+                <th><a href="/sbd">SBD PREPARATION</a></th>
+                <th><a href="/tb">TENDER PUBLISHED</a></th>
+                <th><a href="/to">TENDER OPENED</a></th>
+                <th><a href="/post">POST TENDER DOC</a></th>
+                <th><a href="/tender_ne">TENDER NEGOTIATION</a></th>
+                <th><a href="/loa">LOA APPROVAL</a></th>
+                <th><a href="/agreement">AGREEMENT APPROVED</a></th>
+                <th><a href="/emd">EMD RELEASED</a></th>
+                <th><a href="/count">SITE HANDOVER</a></th>
+                
+                <th>BIDDER</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <% users.forEach((row,index) => { %>
+            <tr class="row">
+                <td><%= index %></td>
+                <td><%=row.ID %></td>
+            
+                <td><%= row.WARD %></td>
+            
+                <td><%= row.PROJECT %></td>
+            
+                <td><%= row.SBD_PREPARATION %></td>
+                     
+            
+                <td><%= row.TENDER_PUBLISHED %></td>
+            
+                <td style="width: 6rem;"><%= row.TENDER_OPEN %></td>
+
+                <td style="width: 6rem;"><%= row.POST_TENDER %></td>
+            
+                <td><%= row.TENDER_NEGOTIATION%></td>
+            
+                <td><%= row.LOA_PREPARATION %></td>
+            
+                <td><%= row.AGREEMENT_APPROVED %></td>
+            
+                <td style="width: 6rem;"><%= row.EMD_RELEASE %></td>
+            
+                <td><%= row.SITE_HANDOVER %></td>
+             
+                <td><%= row.BIDDER %></td>
+                
+            </tr>
+            <% }) %>
+        </tbody>
+        
+    </table>
+    
+</body>
+<script>
+    function submitForm(){
+        var inputValue = document.getElementById("myInput").value;document.getElementById("myForm").submit();
+    }
+</script>
+</html>

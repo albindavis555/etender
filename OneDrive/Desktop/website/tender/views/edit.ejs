@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <style>
+        form{
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .submit{
+            width: 50%;
+            height: 3rem;
+            border-radius: 10px;
+        }
+        .input_bar{
+            margin-bottom: 2rem;
+            display: flex;
+            width: 80%;
+        }
+        input{
+            width: 40%;
+            height: 3rem;
+        }
+        label{
+            width: 30%;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <form action="/update/<%= user._id %>" method="post">
+        <div class="input_bar">
+            <label for="id" >ID</label>
+            <input type="text" name="id" value="<%=user.ID%>">
+        </div>
+
+        <div class="input_bar">
+            <label for="ward" >ward</label>
+            <input type="text" name="ward" value="<%=user.WARD%>">
+        </div>
+        
+        <div class="input_bar">
+            <label for="project" >work</label>
+            <input type="text" name="project" value="<%=user.PROJECT%>">
+        </div>
+        
+        <div class="input_bar">
+            <label for="sbd" >SDB Preperation</label>
+            <input type="text" name="sbd" value="<%=user.SBD_PREPARATION%>""> 
+        </div>
+        
+
+        
+
+        <div class="input_bar">
+            <label for="tenderpublished" >Tender Published</label>
+            <input type="text" name="tenderpublished" value="<%=user.TENDER_PUBLISHED%>">
+        </div>
+        
+
+        
+        <div class="input_bar">
+            <label for="tenderopen" >Tender Opened</label>
+            <input type="text" name="tenderopen" value="<%=user.TENDER_OPEN%>">
+        </div>
+        
+
+        <div class="input_bar">
+            <label for="posttender" >Post Tender DOC</label>
+            <input type="text" name="posttender" value="<%=user.POST_TENDER%>">   
+        </div>
+        
+
+        <div class="input_bar">
+            <label for="tenderapproval" >Tender Negotiation</label>
+            <input type="text" name="tenderapproval" value="<%=user.TENDER_NEGOTIATION%>">   
+        </div>
+        
+
+        <div class="input_bar">
+            <label for="loa" >LOA Approval</label>
+            <input type="text" name="loa" value="<%=user.LOA_PREPARATION %>">   
+        </div>
+        
+
+        <div class="input_bar">
+            <label for="agreementapproved" >Agreement Approved</label>
+            <input type="text" name="agreementapproved" value="<%=user.AGREEMENT_APPROVED%>">    
+        </div>
+        
+
+        <div class="input_bar">
+            <label for="emdrelease" >EMD Released</label>
+            <input type="text" name="emdrelease" value="<%=user.EMD_RELEASE%>">    
+        </div>
+        
+
+        <div class="input_bar">
+            <label for="sitehandover" >Site Handover</label>
+            <input type="text" name="sitehandover" value="<%=user.SITE_HANDOVER%>">
+        </div>
+
+        <div class="input_bar">
+            <label for="sitehandover" >Bidder</label>
+            <input type="text" name="bidder" value="<%=user.BIDDER %>">
+        </div>
+        
+
+        <input class="submit" type="submit" value="submit">
+    </form>
+</body>
+</html>
