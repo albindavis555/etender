@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
+    <title>TENDER_OPEN</title>
     <style>
         body{
             display: grid;
@@ -94,70 +94,73 @@
         <button class="search"><a href="/search">SEARCH</a></button>
     </div> -->
     
-    <form action="/get_details" method="get">
+    <form action="/get" method="get" id="myInput" >
         <input class="search_" type="text" name="search" placeholder="SEARCH">
-       <div class="button_top">
         <input class="search_b" type="submit" value="SEARCH">
-        <button class="add"><a href="/details">ADD DETAILS</a></button>
-        <!-- <a class="glass" href="/glass">glass</a> -->
-       </div>
     </form>
     <table>
         
         <thead>
             <tr>
+                <th>INDEX</th>
                 <th>ID</th>
                 <th>WARD</th>
                 <th>PROJECT</th>
-                <th>SBD PREPARATION</th>
-                <th>TENDER PUBLISHED</th>
-                <th>TENDER OPENED</th>
-                <th>POST TENDER DOC</th>
-                <th>TENDER NEGOTIATION</th>
-                <th>LOA APPROVAL</th>
-                <th>AGREEMENT APPROVED</th>
-                <th>EMD RELEASED</th>
-                <th>SITE HANDOVER</th>
-                <th>ACTION</th>
+                <th><a href="/sbd">SBD PREPARATION</a></th>
+                <th><a href="/tb">TENDER PUBLISHED</a></th>
+                <th><a href="/to">TENDER OPENED</a></th>
+                <th><a href="/post">POST TENDER DOC</a></th>
+                <th><a href="/tender_ne">TENDER NEGOTIATION</a></th>
+                <th><a href="/loa">LOA APPROVAL</a></th>
+                <th><a href="/agreement">AGREEMENT APPROVED</a></th>
+                <th><a href="/emd">EMD RELEASED</a></th>
+                <th><a href="/count">SITE HANDOVER</a></th>
+                
                 <th>BIDDER</th>
             </tr>
         </thead>
         
         <tbody>
             <% user.forEach((row,index) => { %>
-            <tr class="row">
-                <td><%=row.ID %></td>
+            <% const TENDER_OPEN = row.TENDER_OPEN %>   
             
-                <td><%= row.WARD %></td>
-            
-                <td><%= row.PROJECT %></td>
-            
-                <td><%= row.SBD_PREPARATION %></td>
-            
-                <td><%= row.TENDER_PUBLISHED %></td>
-            
-                <td style="width: 6rem;"><%= row.TENDER_OPEN %></td>
-
-                <td style="width: 6rem;"><%= row.POST_TENDER %></td>
-            
-                <td><%= row.TENDER_NEGOTIATION%></td>
-            
-                <td><%= row.LOA_PREPARATION %></td>
-            
-                <td><%= row.AGREEMENT_APPROVED %></td>
-            
-                <td style="width: 6rem;"><%= row.EMD_RELEASE %></td>
-            
-                <td><%= row.SITE_HANDOVER %></td>
-
-                <td> <button style="background-color: rgb(14, 114, 3);"><a style="color: white;" href="/edit/<%= row._id %>">edit</a></button></td>
-
-                <td><%= row.BIDDER %></td>
-             
-               
+            <% if (TENDER_OPEN != 0) {%>
+                <tr class="row">
+                    <td><%= index %></td>
+                    <td><%=row.ID %></td>
                 
+                    <td><%= row.WARD %></td>
                 
-            </tr>
+                    <td><%= row.PROJECT %></td>
+                
+                    <td><%= row.SBD_PREPARATION %></td>
+                
+                    <td><%= row.TENDER_PUBLISHED %></td>
+                
+                    <td style="width: 6rem;"><%= row.TENDER_OPEN %></td>
+    
+                    <td style="width: 6rem;"><%= row.POST_TENDER %></td>
+                
+                    <td><%= row.TENDER_NEGOTIATION%></td>
+                
+                    <td><%= row.LOA_PREPARATION %></td>
+                
+                    <td><%= row.AGREEMENT_APPROVED %></td>
+                
+                    <td style="width: 6rem;"><%= row.EMD_RELEASE %></td>
+                
+                    <td><%= row.SITE_HANDOVER %></td>
+    
+                    
+    
+                    <td><%= row.BIDDER %></td>
+                 
+                   
+                    
+                    
+                </tr>
+            <% } %>
+           
             <% }) %>
         </tbody>
         

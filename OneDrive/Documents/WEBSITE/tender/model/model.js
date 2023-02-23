@@ -37,9 +37,6 @@ const UserSchema = new mongoose.Schema({
     SITE_HANDOVER:{
         type:String,
     },
-    date:{
-        type:Date,
-    },
     BIDDER:{
         type:String,
     },

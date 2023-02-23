@@ -75,7 +75,7 @@ app.post('/details',async(req,res)=>{
         if (err) {
             res.status(500)
         } else {
-            res.redirect('/')
+            res.redirect('/add')
         }
     })
 })
@@ -113,7 +113,6 @@ app.post('/update/:id',(req,res)=>{
         WARD:req.body.ward,
         PROJECT:req.body.project,
         SBD_PREPARATION:req.body.sbd,
-        
         TENDER_PUBLISHED:req.body.tenderpublished,
         TENDER_OPEN:req.body.tenderopen,
         POST_TENDER:req.body.posttender,
@@ -139,7 +138,17 @@ app.get('/search',(req,res)=>{
 app.get('/get',(req,res)=>{
     const searchTerm = req.query.search;
 
-    User.find({ $or: [{ WARD: { $regex: searchTerm, $options: 'i' } }, { PROJECT: { $regex: searchTerm, $options: 'i' } }, { ID: { $regex: searchTerm, $options: 'i' } }] }, (err, users) => {
+    User.find({ $or: [{ WARD: { $regex: searchTerm, $options: 'i' } },
+     { PROJECT: { $regex: searchTerm, $options: 'i' } }, 
+     { EMD_RELEASE: { $regex: searchTerm, $options: 'i' } }, 
+     { BIDDER: { $regex: searchTerm, $options: 'i' } }, 
+     { SITE_HANDOVER: { $regex: searchTerm, $options: 'i' } }, 
+     { LOA_PREPARATION: { $regex: searchTerm, $options: 'i' } },
+     { SBD_PREPARATION: { $regex: searchTerm, $options: 'i' } }, 
+     { TENDER_PUBLISHED: { $regex: searchTerm, $options: 'i' } },  
+     { TENDER_OPEN: { $regex: searchTerm, $options: 'i' } }, 
+     { POST_TENDER: { $regex: searchTerm, $options: 'i' } }, 
+     { ID: { $regex: searchTerm, $options: 'i' } }] }, (err, users) => {
         if (err) {
         //   res.render("searching",{users:users});
         res.redirect('/search')
@@ -154,6 +163,9 @@ app.get('/get',(req,res)=>{
       });
     
 })
+
+
+
 app.get('/add',(req,res)=>{
     User.find().exec((err,user) =>{
         if (err) {
@@ -165,6 +177,152 @@ app.get('/add',(req,res)=>{
     })
 })
 
+
+app.get('/get_details',(req,res)=>{
+    const searchTerm = req.query.search;
+
+    User.find({ $or: [{ WARD: { $regex: searchTerm, $options: 'i' } },
+     { PROJECT: { $regex: searchTerm, $options: 'i' } }, 
+     { EMD_RELEASE: { $regex: searchTerm, $options: 'i' } }, 
+     { BIDDER: { $regex: searchTerm, $options: 'i' } }, 
+     { SITE_HANDOVER: { $regex: searchTerm, $options: 'i' } }, 
+     { LOA_PREPARATION: { $regex: searchTerm, $options: 'i' } },
+     { SBD_PREPARATION: { $regex: searchTerm, $options: 'i' } }, 
+     { TENDER_PUBLISHED: { $regex: searchTerm, $options: 'i' } },  
+     { TENDER_OPEN: { $regex: searchTerm, $options: 'i' } }, 
+     { POST_TENDER: { $regex: searchTerm, $options: 'i' } }, 
+     { ID: { $regex: searchTerm, $options: 'i' } }] }, (err, users) => {
+        if (err) {
+        //   res.render("searching",{users:users});
+        res.redirect('/search')
+        } else {
+            if (users == null) {
+               res.render('details')
+            } else {
+                res.render("details",{user:users})
+            }
+          
+        }
+      });
+    
+})
+
+// get count,site handover
+app.get('/count',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("glass",{user:user})
+        }
+    })
+})
+
+// sbd
+app.get('/sbd',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("sbd",{user:user})
+        }
+    })
+})
+
+
+// TENDER PUBLISHED
+app.get('/tb',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("tb",{user:user})
+        }
+    })
+})
+
+
+// TENDER OPEN
+app.get('/to',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("tO",{user:user})
+        }
+    })
+})
+
+
+// POST TENDER 
+app.get('/post',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("post",{user:user})
+        }
+    })
+})
+
+
+// tender negotiation
+app.get('/tender_ne',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("tender_ne",{user:user})
+        }
+    })
+})
+
+// loa
+app.get('/loa',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("loa",{user:user})
+        }
+    })
+})
+
+
+// agreement
+app.get('/agreement',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("agreement",{user:user})
+        }
+    })
+})
+
+
+// emd
+app.get('/emd',(req,res)=>{
+    User.find().exec((err,user) =>{
+        if (err) {
+            res.send("ERROR")
+        } else {
+            // res.render("details",{user:user})
+            res.render("emd",{user:user})
+        }
+    })
+})
+app.get('/ani',(req,res)=>{
+    res.render("anim")
+})
 
 app.listen(PORT, ()=>{
     connect();

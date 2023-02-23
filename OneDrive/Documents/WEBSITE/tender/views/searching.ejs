@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search</title>
     <style>
         body{
             display: grid;
@@ -15,7 +15,7 @@
             width: 100%;
         }
         thead{
-            background-color: rgb(0, 0, 52);
+            background-color: rgb(0, 52, 44);
             color: white;
             position: sticky;
             top: 0;
@@ -43,6 +43,9 @@
         }
         tr:nth-child(even){
             background-color: rgb(203, 201, 201);
+        }
+        .row:nth-last-child(1){
+            border-bottom: 3px solid rgb(0, 0, 0);
         }
         .button_top{
             width: 100vw;
@@ -79,6 +82,17 @@
         .search_::placeholder{
             text-align: center;
         }
+        @media only screen and (max-width: 600px) {
+  body {
+   
+
+  }
+  thead>tr{
+            position: sticky;
+            top: 0;
+        }
+  
+}
     </style>
    
 </head>
@@ -93,26 +107,28 @@
         
         <thead>
             <tr>
+                <th>INDEX</th>
                 <th>ID</th>
                 <th>WARD</th>
                 <th>PROJECT</th>
-                <th>SBD PREPARATION</th>
+                <th><a href="/sbd">SBD PREPARATION</a></th>
+                <th><a href="/tb">TENDER PUBLISHED</a></th>
+                <th><a href="/to">TENDER OPENED</a></th>
+                <th><a href="/post">POST TENDER DOC</a></th>
+                <th><a href="/tender_ne">TENDER NEGOTIATION</a></th>
+                <th><a href="/loa">LOA APPROVAL</a></th>
+                <th><a href="/agreement">AGREEMENT APPROVED</a></th>
+                <th><a href="/emd">EMD RELEASED</a></th>
+                <th><a href="/count">SITE HANDOVER</a></th>
                 
-                <th>TENDER PUBLISHED</th>
-                <th>TENDER OPEN</th>
-                <th>POST TENDER DOC</th>
-                <th>TENDER NEGOTIATION</th>
-                <th>LOA APPROVAL</th>
-                <th>AGREEMENT APPROVED</th>
-                <th>EMD RELEASE</th>
-                <th>SITE HANDOVER</th>
                 <th>BIDDER</th>
             </tr>
         </thead>
         
         <tbody>
             <% users.forEach((row,index) => { %>
-            <tr>
+            <tr class="row">
+                <td><%= index %></td>
                 <td><%=row.ID %></td>
             
                 <td><%= row.WARD %></td>
@@ -120,8 +136,7 @@
                 <td><%= row.PROJECT %></td>
             
                 <td><%= row.SBD_PREPARATION %></td>
-            
-                
+                     
             
                 <td><%= row.TENDER_PUBLISHED %></td>
             
@@ -139,7 +154,6 @@
             
                 <td><%= row.SITE_HANDOVER %></td>
              
-               
                 <td><%= row.BIDDER %></td>
                 
             </tr>
